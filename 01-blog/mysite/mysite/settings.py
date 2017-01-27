@@ -25,6 +25,8 @@ SECRET_KEY = 'c7%wo$9#pozp0j3td&wvti8dqp+btgv47(j#tsqe=xbyl$17=)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+SITE_ID = 1
+
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     'blog.apps.BlogConfig',
     'taggit',
