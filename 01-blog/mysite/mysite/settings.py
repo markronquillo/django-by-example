@@ -42,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
 
+    'django_extensions',
+
     'blog.apps.BlogConfig',
     'taggit',
+    'haystack',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    }
+}
 
 TEMPLATES = [
     {
