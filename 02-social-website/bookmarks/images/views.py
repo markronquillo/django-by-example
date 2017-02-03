@@ -8,8 +8,12 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from common.decorators import ajax_required
+from actions.utils import create_action
+
 from .forms import ImageCreateForm
 from .models import Image
+
+from actions.models import Action
 
 
 @ajax_required
@@ -23,8 +27,10 @@ def image_like(request):
 			image = Image.objects.get(id=image_id)
 			if action == 'like':
 				image.users_like.add(request.user)
+				create_action(request.user, 'likes', image)
 			else:
 				image.users_like.remove(request.user)
+				create_action(request.user, 'unlikes', image)
 			return JsonResponse({'status': 'ok'})
 		except:
 			pass
@@ -49,6 +55,7 @@ def image_create(request):
 
 			new_item.user = request.user
 			new_item.save()
+			create_action(request.user, 'bookmarked image', new_item)
 			messages.success(request, 'Image added successfully')
 
 			return redirect(new_item.get_absolute_url())
@@ -77,8 +84,10 @@ def image_list(request):
 		return render(request,
 					  'images/image/list_ajax.html',
 					  {'section': 'images', 'images': images})
+
 	return render(request,
 				  'images/image/list.html',
-				  {'section': 'images', 'images': images})
+				  {'section': 'images', 
+				   'images': images})
 
 

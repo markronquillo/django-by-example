@@ -27,3 +27,42 @@ This is how your users will add a bookmarklet to their browser and use it.
 1. The user drags a link from your site to his browser's bookmarks.
 2. The user navigates to any website and clicks the bookmark.
 
+
+## Chapter 6: Tracking User Actions
+
+This chapter will cover the following points:
+- Creating many-to-many relationships with an intermediary model
+- Building ajax views
+- creating an activity stream application
+- adding generic relatinos to models
+- optimizing QuerySets for related objects
+- using signals for denormalizing counts
+- storing item views in Redis
+
+
+#### Building a follower system
+
+A follower system enables users to follow other users for them to see the posts shared by those users.
+
+
+#### Building a generic activiy stream application
+
+An activity stream is a list of recent activities performed by a user or a group of users.
+
+#### Using signals for denormalizing counts
+
+Denormalization is making data redundant in a way that it optimizes read performance
+
+Django comes with a signal dispatcher that allows receiver functions to get notified when certain actions occur. Signals are very useful when you need your code to do something every time something else happens.
+
+`django.db.models.signals`
+
+`pre_save` and `post_save` - sent before or after calling the save() 
+`pre_delete` and `post_delete` - Sent before or after calling delete()
+`m2m_changed` - Sent when a ManyToManyField on a model is changed
+
+Django signals are synchronous and blocking. Don't confuse signals with async tasks. However you can combine both to launch async tasks when your code gets notified by a signal.
+
+The recommended method for registering your signals is by importing them in the ready() method of yoru application configuration class.
+
+

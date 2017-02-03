@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
 
     'images',
+    'actions',
 
 ]
 
@@ -157,4 +158,9 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIAL_ROOT = os.path.join(BASE_DIR, 'media/')
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail',
+                                        args=[u.username])
+}
 
