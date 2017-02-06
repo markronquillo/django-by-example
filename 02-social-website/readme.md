@@ -66,3 +66,21 @@ Django signals are synchronous and blocking. Don't confuse signals with async ta
 The recommended method for registering your signals is by importing them in the ready() method of yoru application configuration class.
 
 
+#### Basic Redis
+
+SET total 1
+DEL total
+GET total
+EXPIRE total 2 
+EXISTS total
+
+Next steps with Redis
+
+- Counting using incr() and incrby()
+- Storing latest items: lpush and rpush, lpop and rpop -- ltrim
+- Queues: blocking queue commands
+- Caching: expire and expireat
+- Pub/Sub:
+- Rankings and leadersboards
+- Real-time tracking
+
