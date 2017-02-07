@@ -52,3 +52,11 @@ The checkout process should work as follows:
 
 
 
+#### Getting payment notifications
+IPN is a method offered by most payment gateways to track purchases realtime.
+
+A notification is instantly sent to yoru server when the gateway processes a payment. 
+
+
+#### Exporting orders to CSV files
+

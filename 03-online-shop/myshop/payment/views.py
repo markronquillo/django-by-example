@@ -15,7 +15,7 @@ def payment_process(request):
 
 
 	paypal_dict = {
-		'bsuiness': settings.PAYPAL_RECEIVER_EMAIL,
+		'business': settings.PAYPAL_RECEIVER_EMAIL,
 		'amount': '%.2f' % order.get_total_cost().quantize(Decimal('.01')),
 		'item_name': 'Order {}'.format(order.id),
 		'currency_code': 'USD',
