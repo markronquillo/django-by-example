@@ -18,7 +18,7 @@ from braces.views import (
 	CsrfExemptMixin, JsonRequestResponseMixin,
 )
 
-from courses.forms import CourseEnrollForm
+from students.forms import CourseEnrollForm
 
 
 

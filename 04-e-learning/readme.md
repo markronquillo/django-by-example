@@ -82,4 +82,29 @@ CourseListView
 We retrieve all subjects, including the total number of courses for each of them. We use the ORM's annotate() method with the Count() aggregation function for doing so.
 
 
+#### Using the cache framework
 
+Available cache backends
+
+- backends.memcached.MemcachedCache or backends.memcached
+	PyLibMCCache: A memcached backend. memcached is a fast and efficient memory-based cache server.
+
+- backends.db.DatabaseCache:
+	- Use the database as cache system
+
+- backends.filebased.FileBasedCache
+	- use the file storage system. Serializes and stores each cache value as a separate file.
+
+- backends.locmem.LocmemCache
+	- Local memory cache backend this is the default cache backend
+
+- backends.dummy.DummyCache
+	- 
+
+Cache settings
+
+CACHES: a dictionary containing all available caches for the project
+CACHE_MIDDLEWARE_ALIAS: the cache alias to use for storage
+CACHE_MIDDLEWARE_KEY_PREFIX: the prefix to use for cache keys. set a prefix to avaoid key collisions if you share the same cache between several sits.
+
+CACHE_MIDDLEWARE_SECONDS: the default number of seconds to cache pages
